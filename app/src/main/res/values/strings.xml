@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">EarthquakeResponseSystem</string>
+    <string name="enter_full_name">enter_full_name</string>
+    <string name="efn">Enter Full Name</string>
+    <string name="email">enter_e_mail_address</string>
+    <string name="enter_e_mail">Enter E-mail</string>
+    <string name="etrphn">enter_phone_numebr</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="enter_username">enter_username</string>
+    <string name="etrusername">Enter Username</string>
+    <string name="enter_password">enter_password</string>
+    <string name="enterpass">enterpass</string>
+    <string name="register">register</string>
+    <string name="type_password">Type Password</string>
+    <string name="re_type_password">Re-type Password</string>
+    <string name="renterpass">enterpass</string>
 </resources>
