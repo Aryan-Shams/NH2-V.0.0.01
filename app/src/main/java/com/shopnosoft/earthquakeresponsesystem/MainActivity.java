@@ -12,6 +12,7 @@ import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,24 +33,26 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onStart() {
         super.onStart();
-        if(network() ){
+        if(!network() ){
+            Toast.makeText(getBaseContext(), "No network!",
+                    Toast.LENGTH_SHORT).show();
             createNetErrorDialog();
         }
-        /*
-//////Checking GPS Status//////////
         else if(!isLocationServiceEnabled()){
-            gps.showSettingsAlert();
+            Toast.makeText(getBaseContext(), "No GPRS!",
+                    Toast.LENGTH_SHORT).show();
+            createNetErrorDialog();
         }
-        */
+
         else
         {
             Intent intent = new Intent(this, RegisterActivity_00.class);
             startActivity(intent);
-        }
+            finish();
+}
 /*
         else{
             if(authenticate() == false){
@@ -65,21 +68,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();  // Always call the superclass method first
-        if(network()){
+        if(!network() ){
+
             createNetErrorDialog();
         }
-        /*
         else if(!isLocationServiceEnabled()){
-            gps.showSettingsAlert();
+            createNetErrorDialog();
         }
-        */
-        //////Checking GPS Status//////////
+
+        else
         {
             Intent intent = new Intent(this, RegisterActivity_00.class);
             startActivity(intent);
-            finish();
+finish();
         }
-        /*
+/*
         else{
             if(authenticate() == false){
 
@@ -89,14 +92,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
 */
-
     }
 
 
 
-
-    ////////<<-------------------------------CHECKING NETWORK CONNECTION STATUS------------------------->>///////////////////////
-
+////////<<-------------------------------CHECKING NETWORK CONNECTION STATUS------------------------->>///////////////////////
 
     public boolean network() {
 
@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
 ////////<<-------------------------------CHECKING NETWORK CONNECTION STATUS ENDS-------------------->>///////////////////////
 
 ////////<<-------------------------------CHECKING GPS  STATUS Starts-------------------->>///////////////////////
@@ -137,7 +136,10 @@ public boolean isLocationServiceEnabled(){
         }
     }
 
-////////<<-------------------------------CHECKING GPS  STATUS Ends-------------------->>///////////////////////
+
+
+
+    ////////<<-------------------------------CHECKING GPS  STATUS Ends-------------------->>///////////////////////
 
 
 ///////<<-------------------------------CREATING ERROR DIALOG--------------------------------------->>////////////////////////
@@ -146,7 +148,7 @@ public boolean isLocationServiceEnabled(){
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("You need a network connection to use this application. Please turn on mobile network or Wi-Fi in Settings.")
+        builder.setMessage("You need a network connection and GPS to use this application. Please turn on mobile network or Wi-Fi and Enable Location in Settings.")
                 .setTitle("Unable to connect")
                 .setCancelable(false)
                 .setPositiveButton("Enable",
