@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.shopnosoft.earthquakeresponsesystem.RegisterActivity_00">
+    tools:context=".RegisterActivity_000">
 
 
     <EditText
@@ -19,8 +19,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:hint="@string/enter_full_name"
-        android:text="@string/efn" />
+        android:hint="Enter Full Name" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -33,34 +32,30 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/etnamereg"
         android:layout_alignEnd="@+id/etnamereg"
-        android:hint="@string/email"
-        android:text="@string/enter_e_mail" />
+        android:hint="Enter E-mail Address" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="phone"
+        android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/etphnnoreg"
         android:layout_below="@+id/etemailreg"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/etemailreg"
         android:layout_alignEnd="@+id/etemailreg"
-        android:hint="@string/etrphn"
-        android:text="@string/enter_phone_number" />
+        android:hint="Enter Phone Number"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/etusrnamereg"
+        android:hint="@string/enter_usernames"
         android:layout_below="@+id/etphnnoreg"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/etphnnoreg"
-        android:layout_alignEnd="@+id/etphnnoreg"
-        android:hint="@string/enter_username"
-        android:text="@string/etrusername" />
+        android:layout_alignEnd="@+id/etphnnoreg" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -68,11 +63,12 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/etpasswordreg"
-        android:hint="@string/enter_password"
-        android:layout_centerVertical="true"
+        android:hint="@string/type_passwords"
+        android:layout_below="@+id/etusrnamereg"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="@string/enterpass" />
+        android:layout_alignRight="@+id/etusrnamereg"
+        android:layout_alignEnd="@+id/etusrnamereg" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -80,30 +76,12 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/etrepasswordreg"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/renterpass" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/type_password"
-        android:id="@+id/textView2"
-        android:layout_above="@+id/etpasswordreg"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/re_type_password"
-        android:id="@+id/textView3"
         android:layout_below="@+id/etpasswordreg"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:hint="@string/retype_passwords" />
 
     <Button
         android:layout_width="wrap_content"
@@ -116,5 +94,6 @@
         android:layout_marginTop="94dp"
         android:layout_alignRight="@+id/etusrnamereg"
         android:layout_alignEnd="@+id/etusrnamereg" />
+
 
 </RelativeLayout>

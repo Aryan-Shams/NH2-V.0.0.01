@@ -1,6 +1,5 @@
 package com.shopnosoft.earthquakeresponsesystem;
 
-import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,10 +11,21 @@ import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView coordinate,address;
 
     private WifiManager wfm;
     private ConnectivityManager cntm;
@@ -23,11 +33,26 @@ public class MainActivity extends AppCompatActivity {
     GPSTracker gps;
 
     Context context;
+    //For Address
+    private RequestQueue requestQueue;
+
+    UserLocalStore userLocalStore;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        userLocalStore = new UserLocalStore(this);
+
+
+
+        coordinate = (TextView)findViewById(R.id.lattiitude_view);
+        address = (TextView)findViewById(R.id.longitidude_view);
+
+        requestQueue = Volley.newRequestQueue(this);
 
     }
 
@@ -48,21 +73,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else
-        {
-            Intent intent = new Intent(this, RegisterActivity_00.class);
-            startActivity(intent);
-            finish();
-}
-/*
-        else{
-            if(authenticate() == false){
+        {//
 
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+            if(authenticate() == false) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity_002.class);
+                MainActivity.this.startActivity(intent);
+                finish();
+            }
+
+            else{
+                Intent intent = new Intent(MainActivity.this, LogoutActivity_004.class);
+                MainActivity.this.startActivity(intent);
+                finish();
             }
         }
 
-*/
     }
 
     @Override
@@ -78,20 +103,22 @@ public class MainActivity extends AppCompatActivity {
 
         else
         {
-            Intent intent = new Intent(this, RegisterActivity_00.class);
-            startActivity(intent);
-finish();
-        }
-/*
-        else{
-            if(authenticate() == false){
 
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+            if(authenticate() == false) {
+
+                Intent intent = new Intent(MainActivity.this, LoginActivity_002.class);
+                MainActivity.this.startActivity(intent);
+                finish();
+            }
+
+            else{
+                Intent intent = new Intent(MainActivity.this, LogoutActivity_004.class);
+                MainActivity.this.startActivity(intent);
+                finish();
+
             }
         }
 
-*/
     }
 
 
@@ -176,6 +203,105 @@ public boolean isLocationServiceEnabled(){
     }
 
 ///////<<-------------------------------CREATING ERROR DIALOG ENDS--------------------------------------->>///////////////////
+
+
+
+
+
+///////<<-------------------------------Checking User Local Data--------------------------------------->>///////////////////
+
+
+    private boolean authenticate(){
+        if (userLocalStore.getUserLoggedIn()== null) {
+
+            return false;
+        }
+
+        return true;
+    }
+
+    ///////<<-------------------------------Checking User Local Data Ends--------------------------------------->>///////////////////
+
+
+
+
+
+
+
+    ///////<<-------------------------------- SHOWING LOCATION CO-ORDINATES  --------------------------->>////////////////////////
+    public void Location(){
+
+        gps = new GPSTracker(MainActivity.this);
+
+        // check if GPS enabled
+        if(gps.canGetLocation()){
+
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            final String lat = String.valueOf(latitude);
+            final String log = String.valueOf(longitude);
+
+
+            // \n is for new line
+            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+            String lcncordnt = "Latitude : "+ latitude + "\nLongitude : "+longitude;
+            coordinate.setText(lcncordnt);
+
+        }else{
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gps.showSettingsAlert();
+        }
+    }
+///////<<-------------------------------- SHOWING LOCATION CO-ORDINATES  ENDS--------------------------->>////////////////////////
+
+
+    ///////<<-------------------------------- Get Address From Location--------------------------->>////////////////////////
+    public void LocationToAddress(){
+
+//
+        gps = new GPSTracker(MainActivity.this);
+
+
+        double latitude = gps.getLatitude();
+        double longitude = gps.getLongitude();
+
+        final String lattoadd = String.valueOf(latitude);
+        final String logtoadd = String.valueOf(longitude);
+
+        JsonObjectRequest request = new JsonObjectRequest("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lattoadd+","+logtoadd+"&key=AIzaSyBma_A78YGbZwGav3SR3vSGoAXka8FGFzQ", new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String get_address = response.getJSONArray("results").getJSONObject(0).getString("formatted_address");
+                    address.setText(get_address);
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(request);
+
+    }
+
+
+
+///////<<-------------------------------- Get Address From Location Ends--------------------------->>////////////////////////
+
+
+
+
 
 
 }
