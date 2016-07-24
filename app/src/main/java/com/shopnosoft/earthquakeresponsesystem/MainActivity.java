@@ -45,15 +45,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userLocalStore = new UserLocalStore(this);
-
-
-
         coordinate = (TextView)findViewById(R.id.lattiitude_view);
         address = (TextView)findViewById(R.id.longitidude_view);
 
+        userLocalStore = new UserLocalStore(this);
+
         requestQueue = Volley.newRequestQueue(this);
 
+
+        //
+        if(!network() ){
+            Toast.makeText(getBaseContext(), "No network!",
+                    Toast.LENGTH_SHORT).show();
+            createNetErrorDialog();
+        }
+        else if(!isLocationServiceEnabled()){
+            Toast.makeText(getBaseContext(), "No GPRS!",
+                    Toast.LENGTH_SHORT).show();
+            createNetErrorDialog();
+        }
+
+
+        else
+        {
+            Location();
+            LocationToAddress();
+
+            if(authenticate() == false) {
+
+                Intent intent = new Intent(MainActivity.this, LoginActivity_002.class);
+                MainActivity.this.startActivity(intent);
+                finish();
+            }
+
+            else{
+
+                Intent intent = new Intent(MainActivity.this, LogoutActivity_004.class);
+                MainActivity.this.startActivity(intent);
+                finish();
+            }
+        }
+        ///
     }
 
 
@@ -73,15 +105,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else
-        {//
-
+        {
+            Location();
+            LocationToAddress();
             if(authenticate() == false) {
+
                 Intent intent = new Intent(MainActivity.this, LoginActivity_002.class);
                 MainActivity.this.startActivity(intent);
                 finish();
             }
 
             else{
+
                 Intent intent = new Intent(MainActivity.this, LogoutActivity_004.class);
                 MainActivity.this.startActivity(intent);
                 finish();
@@ -103,7 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
         else
         {
-
+            Location();
+            LocationToAddress();
             if(authenticate() == false) {
 
                 Intent intent = new Intent(MainActivity.this, LoginActivity_002.class);
@@ -112,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             else{
+
                 Intent intent = new Intent(MainActivity.this, LogoutActivity_004.class);
                 MainActivity.this.startActivity(intent);
                 finish();
@@ -162,8 +199,6 @@ public boolean isLocationServiceEnabled(){
             return false;
         }
     }
-
-
 
 
     ////////<<-------------------------------CHECKING GPS  STATUS Ends-------------------->>///////////////////////
@@ -225,9 +260,6 @@ public boolean isLocationServiceEnabled(){
 
 
 
-
-
-
     ///////<<-------------------------------- SHOWING LOCATION CO-ORDINATES  --------------------------->>////////////////////////
     public void Location(){
 
@@ -244,7 +276,7 @@ public boolean isLocationServiceEnabled(){
 
 
             // \n is for new line
-            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
             String lcncordnt = "Latitude : "+ latitude + "\nLongitude : "+longitude;
             coordinate.setText(lcncordnt);
 
@@ -298,10 +330,6 @@ public boolean isLocationServiceEnabled(){
 
 
 ///////<<-------------------------------- Get Address From Location Ends--------------------------->>////////////////////////
-
-
-
-
 
 
 }
