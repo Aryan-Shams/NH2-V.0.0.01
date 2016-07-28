@@ -51,6 +51,8 @@ public class RegisterActivity_000 extends AppCompatActivity {
                 final String username=etusernamereg.getText().toString();
                 final String password=etpasswordreg.getText().toString();
                 final String repassword=etrepasswordreg.getText().toString();
+                final String usertype = "User";
+
                 if(name.isEmpty() || email.isEmpty()|| mobileno.isEmpty()|| username.isEmpty()|| password.isEmpty() || repassword.isEmpty())
                 {
                     Toast.makeText(getBaseContext(), "PleaseFill all the Fields",Toast.LENGTH_SHORT).show();
@@ -58,7 +60,7 @@ public class RegisterActivity_000 extends AppCompatActivity {
                 }
                 else{
 
-                    if(password==repassword){
+                    if(password.equals(repassword)){
 
 
                         Response.Listener<String> responseListner = new Response.Listener<String>() {
@@ -91,7 +93,7 @@ public class RegisterActivity_000 extends AppCompatActivity {
                             }
                         };
 
-                        RegisterRequest_001 registerRequest = new RegisterRequest_001 (name,email,username,password,mobileno,responseListner );
+                        RegisterRequest_001 registerRequest = new RegisterRequest_001 (name,email,username,password,mobileno,usertype,responseListner );
                         RequestQueue queue = Volley.newRequestQueue(RegisterActivity_000.this);
                         queue.add(registerRequest);
 

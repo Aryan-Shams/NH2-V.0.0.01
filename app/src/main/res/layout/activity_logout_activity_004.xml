@@ -83,7 +83,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="latti"
         android:id="@+id/lattiitude_view"
         android:layout_below="@+id/textView4"
         android:layout_alignLeft="@+id/btLogout"
@@ -102,8 +101,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Longitude"
-        android:id="@+id/longitidude_view"
+        android:id="@+id/cordnt_to_addrs"
         android:layout_below="@+id/textView6"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

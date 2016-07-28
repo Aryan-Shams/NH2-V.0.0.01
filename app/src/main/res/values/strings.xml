@@ -21,4 +21,12 @@
     <string name="enter_usernames">Enter Username</string>
     <string name="type_passwords">Type Password</string>
     <string name="retype_passwords">ReType Password</string>
+    <string name="latti">latti</string>
+    <string name="show">Show</string>
+    <string name="title_activity_navigation__activity_000">Navigation_Activity_000</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

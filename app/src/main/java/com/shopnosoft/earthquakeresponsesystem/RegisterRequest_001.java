@@ -17,7 +17,7 @@ public class RegisterRequest_001 extends StringRequest {
 
     private Map<String, String> params;
 
-    public RegisterRequest_001 (String name, String email, String username, String password, String mobileno, Response.Listener<String> listener){
+    public RegisterRequest_001 (String name, String email, String username, String password, String mobileno,String usertype, Response.Listener<String> listener){
 
         super(Request.Method.POST, REGISTER_REQUEST_URL, listener, null);
 
@@ -27,6 +27,7 @@ public class RegisterRequest_001 extends StringRequest {
         params.put("username",username);
         params.put("password",password);
         params.put("mobileno",mobileno);
+        params.put("usertype",usertype);
     }
 
     @Override
