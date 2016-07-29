@@ -21,6 +21,8 @@ public class UserProfile_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile_);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         upfl_name = (TextView)findViewById(R.id.usrpfl_Name);
         upfl_username = (TextView)findViewById(R.id.usrpfl_usrName);

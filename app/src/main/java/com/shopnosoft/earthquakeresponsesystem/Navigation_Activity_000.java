@@ -42,6 +42,9 @@ public class Navigation_Activity_000 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    //for Double back press
+    private static final int TIME_DELAY = 2000;
+    private static long back_pressed;
 
     private WifiManager wfm;
     private ConnectivityManager cntm;
@@ -125,10 +128,18 @@ public class Navigation_Activity_000 extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (back_pressed + TIME_DELAY > System.currentTimeMillis()) {
+                super.onBackPressed();
+            } else {
+
+                Toast.makeText(getBaseContext(), "Press once again to exit!",
+                        Toast.LENGTH_SHORT).show();
+            }
+            back_pressed = System.currentTimeMillis();
         }
     }
 
@@ -181,20 +192,23 @@ public class Navigation_Activity_000 extends AppCompatActivity
         if (id == R.id.nav_Location) {
             Intent intent = new Intent(Navigation_Activity_000.this, Location_View.class);
             Navigation_Activity_000.this.startActivity(intent);
-            finish();
 
-        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_emergency) {
+            Intent intent = new Intent(Navigation_Activity_000.this, EmergencyActivity.class);
+            Navigation_Activity_000.this.startActivity(intent);
 
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(Navigation_Activity_000.this, UserProfile_Activity.class);
             Navigation_Activity_000.this.startActivity(intent);
-            finish();
+
 
         } else if (id == R.id.LogOut) {
 
             Intent intent = new Intent(Navigation_Activity_000.this, LogoutActivity_004.class);
             Navigation_Activity_000.this.startActivity(intent);
             finish();
+
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

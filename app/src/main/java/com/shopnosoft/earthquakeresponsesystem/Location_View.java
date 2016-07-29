@@ -55,6 +55,8 @@ public class Location_View extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location__view);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         requestQueue = Volley.newRequestQueue(this);
 

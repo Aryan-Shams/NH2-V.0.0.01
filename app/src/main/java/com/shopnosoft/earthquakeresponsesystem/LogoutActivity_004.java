@@ -68,12 +68,8 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
         setContentView(R.layout.activity_logout_activity_004);
 
 
-//Fields
-        etUsernameview = (EditText) findViewById(R.id.etUsernameview);
-        etemialview = (EditText) findViewById(R.id.etemialview);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        tvWelcomeMessage = (TextView) findViewById(R.id.tvWelcomeMessage);
         tvlong_and_latt = (TextView) findViewById(R.id.lattiitude_view);
         co_to_addrs = (TextView) findViewById(R.id.cordnt_to_addrs);
 
@@ -157,12 +153,6 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
         pflmbl=sharedpref_usr.getString("MobileNo_Key","");
         pflusrtyp=sharedpref_usr.getString("UserType_Key","");
         pflsts=sharedpref_usr.getString("loginStatus","");
-
-
-
-
-        etUsernameview.setText(pflusrname);
-        etemialview.setText(pflmail);
 
 
 

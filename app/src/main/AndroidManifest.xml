@@ -20,16 +20,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity_000" />
+        <activity android:name=".RegisterActivity_000">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity_002" />
+        </activity>
         <activity android:name=".LoginActivity_002" />
-        <activity android:name=".LogoutActivity_004" />
+        <activity android:name=".LogoutActivity_004"></activity>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".Navigation_Activity_000"
             android:label="@string/title_activity_navigation__activity_000"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Location_View" />
-        <activity android:name=".UserProfile_Activity"></activity>
+        <activity android:name=".Location_View">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Navigation_Activity_000" />
+        </activity>
+
+        <activity android:name=".UserProfile_Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Navigation_Activity_000" />
+        </activity>
+
+        <activity android:name=".EmergencyActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Navigation_Activity_000" />
+        </activity>
     </application>
 
 </manifest>

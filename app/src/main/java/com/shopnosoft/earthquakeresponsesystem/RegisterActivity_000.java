@@ -26,6 +26,7 @@ public class RegisterActivity_000 extends AppCompatActivity {
         setContentView(R.layout.activity_register_activity_00);
 
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //Initializing the veriables
 
         final EditText etfullnamereg = (EditText) findViewById(R.id.etnamereg);
