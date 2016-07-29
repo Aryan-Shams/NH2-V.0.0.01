@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EarthquakeResponseSystem</string>
+    <string name="app_name">ERS V.0.0.1 </string>
     <string name="enter_full_name">enter_full_name</string>
     <string name="efn">Enter Full Name</string>
     <string name="email">enter_e_mail_address</string>
@@ -10,20 +10,20 @@
     <string name="etrusername">Enter Username</string>
     <string name="enter_password">enter_password</string>
     <string name="enterpass">enterpass</string>
-    <string name="register">register</string>
+    <string name="register">Register</string>
     <string name="type_password">Type Password</string>
     <string name="re_type_password">Re-type Password</string>
     <string name="renterpass">enterpass</string>
-    <string name="username">username</string>
-    <string name="password">password</string>
-    <string name="login">login</string>
+    <string name="username">Usernamesername</string>
+    <string name="password">Passwordassword</string>
+    <string name="login">Loginogin</string>
     <string name="register_here">register_here</string>
     <string name="enter_usernames">Enter Username</string>
     <string name="type_passwords">Type Password</string>
     <string name="retype_passwords">ReType Password</string>
     <string name="latti">latti</string>
     <string name="show">Show</string>
-    <string name="title_activity_navigation__activity_000">Navigation_Activity_000</string>
+    <string name="title_activity_navigation__activity_000">ERS V.0.0.1</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
