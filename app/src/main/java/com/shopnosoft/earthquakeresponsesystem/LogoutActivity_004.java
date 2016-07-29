@@ -82,27 +82,9 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
 
 
 
-        requestQueue = Volley.newRequestQueue(this);
-
 
 
         displayUserDetailspfl();
-
-
-
-
-
-        //
-        if(!network() ){
-            Toast.makeText(getBaseContext(), "No network!",
-                    Toast.LENGTH_SHORT).show();
-            createNetErrorDialog();
-        }
-        else if(!isLocationServiceEnabled()){
-            Toast.makeText(getBaseContext(), "No GPRS!",
-                    Toast.LENGTH_SHORT).show();
-            createNetErrorDialog();
-        }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,14 +112,11 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
     @Override
     protected void onRestart() {
         super.onRestart();
-        if(!network()){
-            createNetErrorDialog();
-        }
-        else{
+
             displayUserDetailspfl();
            // Location();
           //  LocationToAddress();
-        }
+
     }
 
 
@@ -161,85 +140,6 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
 
 
 
-
-////////<<-------------------------------CHECKING NETWORK CONNECTION STATUS------------------------->>///////////////////////
-
-    public boolean network() {
-
-//Get the wifi service of device
-        wfm = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
-//Get the Mobile Dtata service of device
-        cntm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        final NetworkInfo nInfo = cntm.getActiveNetworkInfo();
-
-        if ((wfm.isWifiEnabled()) || (nInfo != null && nInfo.isConnected())) {
-            return true;
-        }
-
-        else{
-            return false;
-        }
-    }
-
-
-
-////////<<-------------------------------CHECKING NETWORK CONNECTION STATUS ENDS-------------------->>///////////////////////
-
-
-
-////////<<-------------------------------CHECKING GPS  STATUS Starts-------------------->>///////////////////////
-
-    public boolean isLocationServiceEnabled(){
-
-        LocationManager locManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-        if (locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            //GPS enabled
-            return true;
-        }
-
-        else{
-            //GPS disabled
-            return false;
-        }
-    }
-////////<<-------------------------------CHECKING GPS  STATUS Ends-------------------->>///////////////////////
-
-
-///////<<-------------------------------CREATING ERROR DIALOG--------------------------------------->>////////////////////////
-
-    protected void createNetErrorDialog() {
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("You need a network connection to use this application. Please turn on mobile network or Wi-Fi in Settings.")
-                .setTitle("Unable to connect")
-                .setCancelable(false)
-                .setPositiveButton("Enable",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Intent i = new Intent(Settings.ACTION_SETTINGS);
-
-                                //startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
-
-                                startActivity(i);
-                                //finish();
-                            }
-                        }
-                )  .setNegativeButton("Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                }
-        )
-
-        ;
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
 ///////<<-------------------------------CREATING ERROR DIALOG ENDS--------------------------------------->>///////////////////
 
     private void displayUserDetailspfl(){
@@ -261,24 +161,12 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
 
 
 
-
-        SharedPreferences sharedpref_lcn = getSharedPreferences("UserLocation", Context.MODE_PRIVATE);
-
-        getLattitude=sharedpref_lcn.getString("Lattitude_key","");
-        getLongititude=sharedpref_lcn.getString("Longitude_key","");
-        getaddress_frm_coordnt=sharedpref_lcn.getString("Location_to_address_Key","" );
-
-        prflmsg = pflfullname + " Welcome to your user area"+pflpass+" "+pflmbl+" "+pflusrtyp+" "+pflsts+"";
-
         etUsernameview.setText(pflusrname);
         etemialview.setText(pflmail);
-        tvWelcomeMessage.setText(prflmsg);
 
 
 
-        String show_coordinates = "Lattitude : "+getLattitude+"\n Longitude : "+getLongititude+"";
-        tvlong_and_latt.setText(show_coordinates);
-        co_to_addrs.setText(getaddress_frm_coordnt);
+
 
 
 
