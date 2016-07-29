@@ -185,7 +185,10 @@ public class Navigation_Activity_000 extends AppCompatActivity
 
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_profile) {
+            Intent intent = new Intent(Navigation_Activity_000.this, UserProfile_Activity.class);
+            Navigation_Activity_000.this.startActivity(intent);
+            finish();
 
         } else if (id == R.id.LogOut) {
 
