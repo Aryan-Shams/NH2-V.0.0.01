@@ -54,7 +54,6 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
     private ConnectivityManager cntm;
     // GPSTracker class
     GPSTracker gps;
-
     Context context;
 
 

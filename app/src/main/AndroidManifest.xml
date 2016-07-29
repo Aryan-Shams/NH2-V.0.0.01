@@ -27,7 +27,8 @@
         <activity
             android:name=".Navigation_Activity_000"
             android:label="@string/title_activity_navigation__activity_000"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Location_View"></activity>
     </application>
 
 </manifest>

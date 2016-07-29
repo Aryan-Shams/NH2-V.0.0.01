@@ -16,7 +16,13 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
         requestQueue = Volley.newRequestQueue(this);
 
 
-        //
         if(!network() ){
             Toast.makeText(getBaseContext(), "No network!",
                     Toast.LENGTH_SHORT).show();
@@ -66,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             else{
-
-
               //  Intent intent = new Intent(MainActivity.this, LogoutActivity_004.class);
                 Intent intent = new Intent(MainActivity.this, Navigation_Activity_000.class);
 
@@ -253,6 +258,9 @@ public boolean isLocationServiceEnabled(){
     }
 
     ///////<<-------------------------------Checking User Local Data Ends--------------------------------------->>///////////////////
+
+
+
 
 
 
