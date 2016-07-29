@@ -22,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -79,10 +80,12 @@ public class Navigation_Activity_000 extends AppCompatActivity
         requestQueue = Volley.newRequestQueue(this);
         Location();
         LocationToAddress();
-        storelocation();;
+        storelocation();
 
 
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -153,7 +156,69 @@ public class Navigation_Activity_000 extends AppCompatActivity
 
 
 
+public void showNoticeAlert(){
 
+    Response.Listener<String> responseListner = new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+
+            try {
+                JSONObject jsonresponse = new JSONObject(response);
+                boolean success = jsonresponse.getBoolean("success");
+
+                if(success){
+
+
+                    String rs_notice = jsonresponse.getString("notice");
+                    String rs_status = jsonresponse.getString("status");
+                    String rs_date = jsonresponse.getString("date");
+                    String rs_time = jsonresponse.getString("time");
+
+                    ////////////////////////Storing USer Data Locally/////////////////////////////////////////////
+
+
+                    SharedPreferences sharedpref = getSharedPreferences("UserNotice", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedpref.edit();
+                    editor.putString("Notice", rs_notice );
+                    editor.putString("Status", rs_status );
+                    editor.putString("Date", rs_date );
+                    editor.putString("Time", rs_time );
+
+
+                    editor.commit();
+
+
+                    Toast.makeText(getBaseContext(), "DATA SAVED!",
+                            Toast.LENGTH_SHORT).show();
+
+                    //////////////////////Storing USer Data Locally/ ends////////////////////////////////////
+
+
+
+
+
+                }
+                else{
+
+                    android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(Navigation_Activity_000.this);
+                    builder.setMessage("Login Failed")
+                            .setNegativeButton("Retry", null)
+                            .create()
+                            .show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+
+
+    Navigation_Activity_000 shownotice = new Navigation_Activity_000(date,responseListner);
+    RequestQueue queue = Volley.newRequestQueue(LoginActivity_002.this);
+    queue.add(loginRequest);
+
+}
 
 
 

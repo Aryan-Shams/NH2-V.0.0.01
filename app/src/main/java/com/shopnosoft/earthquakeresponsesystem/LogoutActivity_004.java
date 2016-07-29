@@ -87,8 +87,6 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
 
 
 
-        //Location();
-        //LocationToAddress();
         displayUserDetailspfl();
 
 
@@ -245,97 +243,6 @@ private static String getLattitude = null, getLongititude = null,getaddress_frm_
 
 ///////<<-------------------------------CREATING ERROR DIALOG ENDS--------------------------------------->>///////////////////
 
-/*
-/////////////////////////////////<<-------------------------------- SHOWING LOCATION CO-ORDINATES  --------------------------->>////////////////////////
-    public void Location(){
-
-        gps = new GPSTracker(LogoutActivity_004.this);
-
-        double latitude,longitude;
-
-        // check if GPS enabled
-        if(gps.canGetLocation()){
-
-                latitude = gps.getLatitude();
-                longitude = gps.getLongitude();
-
-                    if(latitude>0 && longitude>0){
-                            Lattitude = String.valueOf(latitude);
-                            Longitude = String.valueOf(longitude);
-                    }
-                    else{
-                            gps.canGetLocation();
-                            latitude = gps.getLatitude();
-                            longitude = gps.getLongitude();
-                            Lattitude = String.valueOf(latitude);
-                            Longitude = String.valueOf(longitude);
-                    }
-
-                SharedPreferences sharedpref_lcn = getSharedPreferences("UserLocation",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedpref_lcn.edit();
-                editor.putString("Lattitude_key", Lattitude );
-                editor.putString("Longitude_key",Longitude);
-                editor.commit();
-
-
-        }else{
-                // can't get location
-                // GPS or Network is not enabled
-                // Ask user to enable GPS/network in settings
-                gps.showSettingsAlert();
-
-        }
-
-
-    }
-
-////////////////////////////////////////////<<-------------------------------- SHOWING LOCATION CO-ORDINATES  ENDS----------------------------->>////////////////////////
-
-
-
-////////////////////////////////////////////<<------------------------------------- Get Address From Location---------------------------------->>////////////////////////
-
-
-    public void LocationToAddress(){
-
-            gps = new GPSTracker(LogoutActivity_004.this);
-
-
-            double for_address_latitude = gps.getLatitude();
-            double for_address_longitude = gps.getLongitude();
-
-            final String lattoadd = String.valueOf(for_address_latitude);
-            final String logtoadd = String.valueOf(for_address_longitude);
-
-            JsonObjectRequest request = new JsonObjectRequest("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lattoadd+","+logtoadd+"&key=AIzaSyBma_A78YGbZwGav3SR3vSGoAXka8FGFzQ", new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                String get_address = response.getJSONArray("results").getJSONObject(0).getString("formatted_address");
-
-
-                                SharedPreferences sharedpref_lcn = getSharedPreferences("UserLocation",Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedpref_lcn.edit();
-                                editor.putString("Location_to_address_Key", get_address );
-                                editor.commit();
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-                requestQueue.add(request);
- }
-
-////////////////////////////////////////////<<------------------------ Get Address From Location Ends------------------->>/////////////////////////////////////////////////////
-*/
     private void displayUserDetailspfl(){
 
         String prflmsg,pflfullname,pflmail,pflusrname,pflpass,pflmbl,pflusrtyp,pflsts;
