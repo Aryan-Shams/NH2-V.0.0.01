@@ -333,7 +333,7 @@ private static String User_status_buttonresponse=null;
                     tvNotice.setMovementMethod(new ScrollingMovementMethod());
 
 
-                    tvNotice.setText("\nDate : "+alrtdate+"\nType : "+alrtstatus+"\nNotice : "+alrtnotice+"");
+                    tvNotice.setText("\n\nDate : "+alrtdate+"\nType : "+alrtstatus+"\nNotice : "+alrtnotice+"");
 
 
 
