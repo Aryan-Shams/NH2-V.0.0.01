@@ -1,19 +1,12 @@
 package com.shopnosoft.earthquakeresponsesystem;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.LocationManager;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.view.View;
+import android.text.method.ScrollingMovementMethod;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,13 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -53,10 +44,9 @@ public class Navigation_Activity_000 extends AppCompatActivity
     //For Address
     private RequestQueue requestQueue;
 
+    private static String Lattitude = null,Longitude = null,Address=null;
 
-    private static String getLattitude = null, getLongititude = null,getaddress_frm_coordnt=null,Lattitude = null,Longitude = null,Address=null;
-
-
+private static String User_status_buttonresponse=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +57,7 @@ public class Navigation_Activity_000 extends AppCompatActivity
         setContentView(R.layout.activity_navigation__activity_000);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-/*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-*/
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -89,38 +70,53 @@ public class Navigation_Activity_000 extends AppCompatActivity
         requestQueue = Volley.newRequestQueue(this);
 
 
-        final TextView tvdate = (TextView)findViewById(R.id.tv_date);
-        final TextView tvstatuse = (TextView)findViewById(R.id.tvstatus);
-        final TextView tvNotice = (TextView) findViewById(R.id.tvalrtnotice) ;
-
-     //   final Button btSafe = (Button) findViewById(R.id.btnSafe);
-       // final Button btHelp = (Button) findViewById(R.id.btnHelp);
-
-
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-       final String gtntc,gtdt,gtsts,shnownotice;
-
-      SharedPreferences sharedpref_alrt = getSharedPreferences("UserAlert",Context.MODE_PRIVATE);
-
-        gtntc = sharedpref_alrt.getString("Alert_notice_Key","");
-        gtsts = sharedpref_alrt.getString("Alert_status_Key","");
-        gtdt=    sharedpref_alrt.getString("Alert_date_Key","");
-
-
-        tvstatuse.setText(gtsts);
-
-        tvdate.setText(gtdt);
-
-       tvNotice.setText(gtntc);
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
         showNoticeAlert();
+        showUserStatus();
         storelocation();
+
+
+        Button bt_for_help = (Button)findViewById(R.id.btn_help);
+        Button bt_for_safe = (Button)findViewById(R.id.btn_safe);
+
+
+
+
+        bt_for_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                User_status_buttonresponse="Help";
+
+                UserstatusReport();
+               showUserStatus();
+                showNoticeAlert();
+
+                User_status_buttonresponse=null;
+
+            }
+        });
+
+        bt_for_safe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                User_status_buttonresponse="Safe";
+
+
+                UserstatusReport();
+                showUserStatus();
+                showNoticeAlert();
+
+               User_status_buttonresponse=null;
+
+
+            }
+        });
+
+
+
+
+
+
 
 
     }
@@ -148,6 +144,7 @@ public class Navigation_Activity_000 extends AppCompatActivity
         super.onStart();
 
         showNoticeAlert();
+     showUserStatus();
         storelocation();
 
 
@@ -158,6 +155,7 @@ public class Navigation_Activity_000 extends AppCompatActivity
         super.onResume();
 
         showNoticeAlert();
+        showUserStatus();
         storelocation();
     }
 
@@ -331,14 +329,15 @@ public class Navigation_Activity_000 extends AppCompatActivity
                     final String alrtstatus = response.getString("status");
                     final String alrtdate = response.getString("date");
 
-             final TextView tvdate = (TextView)findViewById(R.id.tv_date);
-                    final TextView tvstatuse = (TextView)findViewById(R.id.tvstatus);
                     final TextView tvNotice = (TextView) findViewById(R.id.tvalrtnotice) ;
+                    tvNotice.setMovementMethod(new ScrollingMovementMethod());
 
 
-                    tvdate.setText(alrtdate);
-                    tvstatuse.setText(alrtstatus);
-                    tvNotice.setText(alrtnotice);
+                    tvNotice.setText("\nDate : "+alrtdate+"\nType : "+alrtstatus+"\nNotice : "+alrtnotice+"");
+
+
+
+                  //  tvNotice.setText("Date : "+alrtdate+"\nType : "+alrtstatus+"\nNotice : "+alrtnotice+"");
 
 
 
@@ -357,6 +356,90 @@ public class Navigation_Activity_000 extends AppCompatActivity
 
     }
 
+    public void showUserStatus(){
+
+
+        SharedPreferences sharedpref_usr = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
+
+        final String shsttsmobileno=sharedpref_usr.getString("MobileNo_Key","");
+
+
+        Response.Listener<String> responseListner = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                final TextView tvUserStatus = (TextView) findViewById(R.id.usrstts) ;
+
+                String show_usr_stts = null;
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    if (success) {
+
+                        show_usr_stts = jsonResponse.getString("userstatus");
+
+
+
+                        tvUserStatus.setText("Your Status is : "+show_usr_stts+"");
+
+                    } else {
+                        tvUserStatus.setText("Your Status is : Unavailable");
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        ShowuserStatusRequest showusrsttsrequest = new ShowuserStatusRequest (shsttsmobileno,responseListner );
+        RequestQueue queue = Volley.newRequestQueue(Navigation_Activity_000.this);
+        queue.add(showusrsttsrequest);
+
+
+    }
+
+    public void UserstatusReport(){
+
+
+        SharedPreferences sharedpref_usr = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
+
+        final String shsttsmobileno=sharedpref_usr.getString("MobileNo_Key","");
+
+
+        Response.Listener<String> responseListner = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                final TextView tvUserStatus = (TextView) findViewById(R.id.usrstts) ;
+                String status_tmp;
+
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    if (success) {
+
+
+                     //   Toast.makeText(getBaseContext(), "Status Updated",Toast.LENGTH_SHORT).show();
+                        showUserStatus();
+
+                    } else {
+                       Toast.makeText(getBaseContext(), "Status Update Failed",Toast.LENGTH_SHORT).show();
+                        showUserStatus();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+       // Toast.makeText(getBaseContext(), User_status_buttonresponse,Toast.LENGTH_SHORT).show();
+
+        UserStatusReportRequest userStatusReportRequest = new UserStatusReportRequest (shsttsmobileno,User_status_buttonresponse,responseListner );
+        RequestQueue queue = Volley.newRequestQueue(Navigation_Activity_000.this);
+        queue.add(userStatusReportRequest);
+
+
+    }
 
 
 

@@ -10,64 +10,76 @@
         tools:context=".Navigation_Activity_000">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_above="@+id/button2"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="340dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/tvalrtnotice"
-        android:layout_alignEnd="@+id/tvalrtnotice" />
+        android:id="@+id/scrollviewntc"
+        >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"  >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/tvalrtnotice"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+
+</LinearLayout>
+    </ScrollView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Medium Text"
-        android:id="@+id/tvalrtnotice"
-        android:layout_above="@+id/button"
+        android:id="@+id/usrstts"
+        android:layout_below="@+id/scrollviewntc"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/tvstatus" />
+        android:layout_marginTop="15dp"
 
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/tvstatus"
-        android:layout_below="@+id/tv_date"
+        android:text="HELP !!!"
+        android:id="@+id/btn_help"
+        android:layout_below="@+id/usrstts"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/tvalrtnotice"
-        android:layout_alignEnd="@+id/tvalrtnotice" />
+        android:layout_alignRight="@+id/usrstts"
+        android:layout_alignEnd="@+id/usrstts"
+        android:layout_marginTop="10dp"
+        android:background="#c62828" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/tv_date"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="46dp"
-        android:layout_alignRight="@+id/tvalrtnotice"
-        android:layout_alignEnd="@+id/tvalrtnotice"
+        android:text="SAFE :)"
+        android:id="@+id/btn_safe"
+        android:layout_below="@+id/btn_help"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignRight="@+id/usrstts"
+        android:layout_alignEnd="@+id/usrstts"
+        android:background="#2e7d32" />
+
 
 </RelativeLayout>
