@@ -85,7 +85,7 @@ private static String User_status_buttonresponse=null;
             @Override
             public void onClick(View view) {
 
-                User_status_buttonresponse="Help";
+                User_status_buttonresponse="HELP";
 
                 UserstatusReport();
                showUserStatus();
@@ -99,7 +99,7 @@ private static String User_status_buttonresponse=null;
         bt_for_safe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User_status_buttonresponse="Safe";
+                User_status_buttonresponse="SAFE";
 
 
                 UserstatusReport();
@@ -377,9 +377,17 @@ private static String User_status_buttonresponse=null;
 
                         show_usr_stts = jsonResponse.getString("userstatus");
 
+                            if(show_usr_stts.equals("SAFE")){
+                                tvUserStatus.setText("Your are "+show_usr_stts+" !!!");
+
+                            }
+
+                            else{
+                                tvUserStatus.setText("Your asked for "+show_usr_stts+" !!!");
 
 
-                        tvUserStatus.setText("Your Status is : "+show_usr_stts+"");
+                            }
+
 
                     } else {
                         tvUserStatus.setText("Your Status is : Unavailable");

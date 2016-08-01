@@ -23,10 +23,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Your Current Location :"
         android:id="@+id/textView3"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="25dp"
         android:layout_below="@+id/tv_lvw_welcmmsg"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -37,7 +37,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Lattitude :"
         android:id="@+id/textView5"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -45,7 +45,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/tv_lvw_lattitude"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
@@ -59,7 +59,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Longititude : "
         android:id="@+id/textView7"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/tv_lvw_lattitude"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -67,7 +67,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/tv_lvw_longititude"
         android:layout_below="@+id/textView7"
         android:layout_alignParentLeft="true"
@@ -78,10 +78,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Your Present Address :"
         android:id="@+id/textView8"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/tv_lvw_longititude"
+        android:layout_marginTop="25dp"
         android:layout_alignRight="@+id/tv_lvw_longititude"
         android:layout_alignEnd="@+id/tv_lvw_longititude"
         android:layout_alignParentLeft="true"
@@ -103,10 +104,11 @@
         android:layout_height="wrap_content"
         android:text="Update Location"
         android:id="@+id/btn_lv_updatelctn"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/tv_lvw_address"
+        android:layout_marginTop="35dp"
         android:layout_alignRight="@+id/tv_lvw_address"
         android:layout_alignEnd="@+id/tv_lvw_address"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="#2e7d32" />
 </RelativeLayout>

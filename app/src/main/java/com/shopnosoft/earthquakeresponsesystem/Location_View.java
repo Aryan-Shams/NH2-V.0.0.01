@@ -72,7 +72,7 @@ public class Location_View extends AppCompatActivity {
         SharedPreferences sharedpref_usr = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
 
         final String lc_name=sharedpref_usr.getString("Name_Key","");
-        lcvw_Name.setText("Dear "+lc_name+"");
+        lcvw_Name.setText("Dear \n"+lc_name+"");
 
 
         storelocation();
