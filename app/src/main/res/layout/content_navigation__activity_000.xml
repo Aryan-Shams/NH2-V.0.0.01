@@ -79,7 +79,7 @@
         android:layout_marginTop="10dp"
         android:layout_alignRight="@+id/usrstts"
         android:layout_alignEnd="@+id/usrstts"
-        android:background="#2e7d32" />
+     />
 
 
 </RelativeLayout>

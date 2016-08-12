@@ -23,66 +23,112 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Police Controll Room : 01776554411"
+        android:text="Police Controll Room "
         android:id="@+id/textView4"
+        android:layout_marginTop="24dp"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-    android:layout_marginTop="22dp" />
+        android:layout_centerHorizontal="true" />
 
-
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Tourist Police : 01776554411"
-        android:id="@+id/textView10"
+        android:text="01713398311"
+        android:id="@+id/btn_plc_cntrlrm"
         android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fire Service : 01776554411"
-        android:id="@+id/textView6"
+        android:text="RAB Head-Quarter"
+        android:id="@+id/textView10"
+        android:layout_below="@+id/btn_plc_cntrlrm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="017777202029"
+        android:id="@+id/btn_rab_hdqrtr"
         android:layout_below="@+id/textView10"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Ambulance Service : 01776554411"
-        android:id="@+id/textView12"
+        android:text="Industrial Police"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/btn_rab_hdqrtr"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01730739675"
+        android:id="@+id/btn_indstrl_plc"
         android:layout_below="@+id/textView6"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Women Helpline : 01776554411"
-        android:id="@+id/textView14"
+        android:text="Tourist Police"
+        android:id="@+id/textView12"
+        android:layout_below="@+id/btn_indstrl_plc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01769690740"
+        android:id="@+id/btn_tourist_police"
         android:layout_below="@+id/textView12"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:layout_alignRight="@+id/btn_indstrl_plc"
+        android:layout_alignEnd="@+id/btn_indstrl_plc" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Child Helpline : 01776554411"
-        android:id="@+id/textView16"
+        android:text="Fire Service"
+        android:id="@+id/textView14"
+        android:layout_below="@+id/btn_tourist_police"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="029555555"
+        android:id="@+id/btn_fireservice"
         android:layout_below="@+id/textView14"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:layout_alignRight="@+id/btn_tourist_police"
+        android:layout_alignEnd="@+id/btn_tourist_police" />
+
 </RelativeLayout>
