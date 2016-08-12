@@ -66,7 +66,7 @@
         android:layout_alignRight="@+id/usrstts"
         android:layout_alignEnd="@+id/usrstts"
         android:layout_marginTop="10dp"
-        android:background="#c62828" />
+        android:background="#B71C1C" />
 
     <Button
         android:layout_width="fill_parent"
@@ -79,7 +79,9 @@
         android:layout_marginTop="10dp"
         android:layout_alignRight="@+id/usrstts"
         android:layout_alignEnd="@+id/usrstts"
-     />
+        android:background="#1B5E20"
+
+        />
 
 
 </RelativeLayout>
