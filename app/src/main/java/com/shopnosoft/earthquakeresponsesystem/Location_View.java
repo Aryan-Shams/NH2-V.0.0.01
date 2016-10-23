@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
@@ -36,7 +37,7 @@ public class Location_View extends AppCompatActivity {
     String getlcn_usermobile = null;
 
     TextView lcvw_Name,lcvw_lattitude,lcvw_longitude,lcvw_address;
-    Button lcn_btnupdt;
+    Button lcn_btnupdt,lcn_btnvw;
 
     private static String getLattitude = null, getLongititude = null,getaddress_frm_coordnt=null,Lattitude = null,Longitude = null,Address=null;
 
@@ -66,6 +67,7 @@ public class Location_View extends AppCompatActivity {
         lcvw_longitude = (TextView)findViewById(R.id.tv_lvw_longititude);
         lcvw_address = (TextView)findViewById(R.id.tv_lvw_address);
         lcn_btnupdt = (Button)findViewById(R.id.btn_lv_updatelctn);
+        lcn_btnvw = (Button)findViewById(R.id.btn_lv_vwlctn);
 
 
 
@@ -75,16 +77,42 @@ public class Location_View extends AppCompatActivity {
         lcvw_Name.setText("Dear \n"+lc_name+"");
 
 
-        storelocation();
         get_location();
+
+
+        storelocation();
 
         lcn_btnupdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                storelocation();
+
 
                 get_location();
+
+
+                storelocation();
+
+            }
+        });
+
+
+
+
+
+        lcn_btnvw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                get_location();
+
+
+                storelocation();
+
+
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:"+Lattitude+","+Longitude+""));
+                startActivity(intent);
 
             }
         });

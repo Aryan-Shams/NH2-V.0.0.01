@@ -107,9 +107,6 @@ public class LoginActivity_002 extends AppCompatActivity {
 
  //////////////////////Storing USer Data Locally/ ends////////////////////////////////////
 
-
-
-                                   // Intent intent = new Intent(LoginActivity_002.this, LogoutActivity_004.class);
                                     Intent intent = new Intent(LoginActivity_002.this, Navigation_Activity_000.class);
 
                                     LoginActivity_002.this.startActivity(intent);

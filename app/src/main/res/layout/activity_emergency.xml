@@ -16,8 +16,7 @@
         android:text="Emergency Contact Numbers"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +26,8 @@
         android:id="@+id/textView4"
         android:layout_marginTop="24dp"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,7 +38,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="#66bb6a" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +50,7 @@
         android:layout_below="@+id/btn_plc_cntrlrm"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        />
+        android:textColor="#000000" />
 
 
     <Button
@@ -61,7 +62,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="#66bb6a" />
 
 
     <TextView
@@ -73,7 +75,7 @@
         android:layout_below="@+id/btn_rab_hdqrtr"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        />
+        android:textColor="#000000" />
 
 
 
@@ -86,7 +88,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="#66bb6a" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -97,7 +100,7 @@
         android:layout_below="@+id/btn_indstrl_plc"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        />
+        android:textColor="#000000" />
 
     <Button
         android:layout_width="wrap_content"
@@ -108,7 +111,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/btn_indstrl_plc"
-        android:layout_alignEnd="@+id/btn_indstrl_plc" />
+        android:layout_alignEnd="@+id/btn_indstrl_plc"
+        android:background="#66bb6a" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -118,7 +122,8 @@
         android:id="@+id/textView14"
         android:layout_below="@+id/btn_tourist_police"
         android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000" />
 
     <Button
         android:layout_width="wrap_content"
@@ -129,6 +134,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/btn_tourist_police"
-        android:layout_alignEnd="@+id/btn_tourist_police" />
+        android:layout_alignEnd="@+id/btn_tourist_police"
+        android:background="#66bb6a" />
 
 </RelativeLayout>

@@ -41,11 +41,14 @@
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/bLoginlgn"
+        android:background="#66BB6A"
+        android:layout_marginTop="39dp"
         android:layout_below="@+id/etPasswordlogin"
+        android:layout_alignRight="@+id/etPasswordlogin"
+        android:layout_alignEnd="@+id/etPasswordlogin"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,6 +56,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Register Here"
         android:id="@+id/tvRegisterHere"
+        android:textColor="#ff1744"
         android:layout_below="@+id/bLoginlgn"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

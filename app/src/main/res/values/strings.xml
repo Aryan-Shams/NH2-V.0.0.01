@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ERS V.0.0.1 </string>
+    <string name="app_name">NH2</string>
     <string name="enter_full_name">enter_full_name</string>
     <string name="efn">Enter Full Name</string>
     <string name="email">enter_e_mail_address</string>
@@ -23,11 +23,12 @@
     <string name="retype_passwords">ReType Password</string>
     <string name="latti">latti</string>
     <string name="show">Show</string>
-    <string name="title_activity_navigation__activity_000">ERS V.0.0.1</string>
+    <string name="title_activity_navigation__activity_000">NH2</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_blank">blank</string>
+    <string name="title_activity_my__maplctn">Map</string>
 </resources>
